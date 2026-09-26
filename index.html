@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MOHAMMED WAJID KHOVAWALE — Cybersecurity Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080c10;
+    --surface: #0d1117;
+    --surface2: #111820;
+    --border: #1e2d3d;
+    --accent: #00d4ff;
+    --accent2: #7c3aed;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --dim: #3d444d;
+    --danger: #f85149;
+    --green: #3fb950;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(8,12,16,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 2rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .hero-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  .day-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-greeting {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+    font-weight: 400;
+  }
+
+  .hero-name {
+    font-size: clamp(3rem, 9vw, 6.5rem);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--text) 40%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-tagline {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .hero-bio {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.75;
+    margin-bottom: 2.2rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background: #33dcff;
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-socials {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-socials a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .hero-socials a:hover { color: var(--accent); }
+
+  /* ── SKILL TICKER ── */
+  .skill-ticker-wrap {
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 0.85rem 0;
+    margin: 2rem 0 0;
+    background: var(--surface);
+  }
+
+  .skill-ticker {
+    display: flex;
+    gap: 2.5rem;
+    animation: ticker 28s linear infinite;
+    white-space: nowrap;
+  }
+
+  .skill-ticker:hover { animation-play-state: paused; }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .skill-chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .skill-chip span { color: var(--accent); }
+
+  /* ── SECTION ── */
+  section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent2);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.6rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-sub {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 3rem;
+    max-width: 500px;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.6rem;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(0,212,255,0.04));
+    pointer-events: none;
+  }
+
+  .project-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+  }
+
+  .project-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .project-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.67rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  .tag-ai { background: rgba(124,58,237,0.2); color: #a78bfa; border: 1px solid rgba(124,58,237,0.3); }
+  .tag-kernel { background: rgba(248,81,73,0.15); color: #f97583; border: 1px solid rgba(248,81,73,0.25); }
+  .tag-mcp { background: rgba(63,185,80,0.15); color: #56d364; border: 1px solid rgba(63,185,80,0.25); }
+  .tag-film { background: rgba(0,212,255,0.15); color: #79c0ff; border: 1px solid rgba(0,212,255,0.25); }
+
+  .project-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .project-stat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .project-stack {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .stack-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--dim);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.2rem 0.55rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── SKILLS GRID ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .skill-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    transition: border-color 0.2s;
+  }
+
+  .skill-block:hover { border-color: var(--accent2); }
+
+  .skill-block-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .skill-block-cat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.67rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .about-text p strong { color: var(--text); }
+
+  .about-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .fact {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .fact-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .fact-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  .cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .cert-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cert-icon { font-size: 1.2rem; }
+
+  .cert-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.1rem;
+  }
+
+  .cert-issuer {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+    text-align: center;
+  }
+
+  .contact-inner {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 3rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-inner::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(0,212,255,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact-title {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.6rem;
+  }
+
+  .contact-sub {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 1.5rem 2rem;
+  }
+
+  footer p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--dim);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    nav { padding: 0.8rem 1.2rem; }
+    .nav-links { gap: 1rem; }
+    #hero { padding: 5rem 1.2rem 3rem; }
+    section { padding: 3.5rem 1.2rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-inner { padding: 2rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MH // sec</div>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="day-time" id="dayTime">SATURDAY — 26 SEPT 2026 — 16:23</div>
+  <div class="hero-meta">
+    <div class="status-dot"></div>
+    Available for internships &amp; collaborations
+  </div>
+  <p class="hero-greeting">Hello, I'm</p>
+  <h1 class="hero-name">MOHAMMED WAJID<br>KHOVAWALE</h1>
+  <p class="hero-tagline">&gt; A Cybersecurity Engineer</p>
+  <p class="hero-bio">
+    B.E. CSE (Cyber Security) student at RYMEC, Ballari. I build AI-powered security tools,
+    hack kernels at the driver level, and turn real threats into working defences —
+    not just slides.
+  </p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">View my work</a>
+    <a href="#contact" class="btn btn-ghost">Get in touch</a>
+  </div>
+  <div class="hero-socials">
+    <a href="https://github.com/MDXWAJID" target="_blank">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.1.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.83.57C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+    <a href="https://www.linkedin.com/in/mohammed-wajid-khovawale-1485743b8/" target="_blank">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.58 0 4.24 2.36 4.24 5.42v6.32zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.57V9h3.55v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45C23.21 24 24 23.23 24 22.28V1.72C24 .77 23.21 0 22.22 0z"/></svg>
+      LinkedIn
+    </a>
+    <a href="mailto:mohammed@example.com">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      Email
+    </a>
+  </div>
+
+  <!-- SKILL TICKER -->
+  <div class="skill-ticker-wrap" style="margin-left:-2rem; margin-right:-2rem; width:calc(100% + 4rem);">
+    <div class="skill-ticker" id="ticker">
+      <span class="skill-chip"><span>//</span> Python</span>
+      <span class="skill-chip"><span>//</span> Kali Linux</span>
+      <span class="skill-chip"><span>//</span> Machine Learning</span>
+      <span class="skill-chip"><span>//</span> Kernel Development</span>
+      <span class="skill-chip"><span>//</span> Flask</span>
+      <span class="skill-chip"><span>//</span> OSINT</span>
+      <span class="skill-chip"><span>//</span> scikit-learn</span>
+      <span class="skill-chip"><span>//</span> Android Modding</span>
+      <span class="skill-chip"><span>//</span> Wireshark</span>
+      <span class="skill-chip"><span>//</span> Network Security</span>
+      <span class="skill-chip"><span>//</span> Bash Scripting</span>
+      <span class="skill-chip"><span>//</span> Ethical Hacking</span>
+      <span class="skill-chip"><span>//</span> VMware</span>
+      <span class="skill-chip"><span>//</span> Git</span>
+      <!-- duplicated for seamless loop -->
+      <span class="skill-chip"><span>//</span> Python</span>
+      <span class="skill-chip"><span>//</span> Kali Linux</span>
+      <span class="skill-chip"><span>//</span> Machine Learning</span>
+      <span class="skill-chip"><span>//</span> Kernel Development</span>
+      <span class="skill-chip"><span>//</span> Flask</span>
+      <span class="skill-chip"><span>//</span> OSINT</span>
+      <span class="skill-chip"><span>//</span> scikit-learn</span>
+      <span class="skill-chip"><span>//</span> Android Modding</span>
+      <span class="skill-chip"><span>//</span> Wireshark</span>
+      <span class="skill-chip"><span>//</span> Network Security</span>
+      <span class="skill-chip"><span>//</span> Bash Scripting</span>
+      <span class="skill-chip"><span>//</span> Ethical Hacking</span>
+      <span class="skill-chip"><span>//</span> VMware</span>
+      <span class="skill-chip"><span>//</span> Git</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">// WORK</div>
+  <h2 class="section-title">Things I've Built</h2>
+  <p class="section-sub">Real projects — not tutorials, not clones.</p>
+
+  <div class="projects-grid">
+
+    <!-- PhishGuard AI -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🛡️</div>
+        <span class="project-tag tag-ai">ML / SECURITY</span>
+      </div>
+      <div class="project-name">PhishGuard AI</div>
+      <div class="project-desc">
+        Random Forest model that detects phishing and malicious URLs with a SOC-style analyst dashboard. Built from scratch — data, model, API, and UI.
+      </div>
+      <div class="project-stat">97.14% accuracy — trained on 36,711 URLs</div>
+      <div class="project-stack">
+        <span class="stack-pill">Python</span>
+        <span class="stack-pill">scikit-learn</span>
+        <span class="stack-pill">Flask</span>
+        <span class="stack-pill">Random Forest</span>
+        <span class="stack-pill">HTML/CSS</span>
+      </div>
+    </div>
+
+    <!-- StormBreaker Kernel -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">⚡</div>
+        <span class="project-tag tag-kernel">KERNEL / ANDROID</span>
+      </div>
+      <div class="project-name">StormBreaker Kernel</div>
+      <div class="project-desc">
+        Custom Kali NetHunter kernel for Poco X2 (SM6150) — adds AR9271 WiFi driver for monitor mode and packet injection. Built locally on Kali Linux from source.
+      </div>
+      <div class="project-stat">AR9271 ath9k_htc driver — monitor mode + packet injection</div>
+      <div class="project-stack">
+        <span class="stack-pill">Linux Kernel</span>
+        <span class="stack-pill">Android</span>
+        <span class="stack-pill">Kali NetHunter</span>
+        <span class="stack-pill">AnyKernel3</span>
+        <span class="stack-pill">C</span>
+      </div>
+    </div>
+
+    <!-- SecOps MCP -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🔌</div>
+        <span class="project-tag tag-mcp">OPEN SOURCE</span>
+      </div>
+      <div class="project-name">SecOps-MCP</div>
+      <div class="project-desc">
+        Open-source Model Context Protocol server that exposes cybersecurity tools to AI agents — making security tooling natively accessible to LLMs.
+      </div>
+      <div class="project-stack">
+        <span class="stack-pill">MCP</span>
+        <span class="stack-pill">Python</span>
+        <span class="stack-pill">AI Agents</span>
+        <span class="stack-pill">Security Tools</span>
+      </div>
+    </div>
+
+    <!-- Not An Offer -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🎬</div>
+        <span class="project-tag tag-film">AWARENESS / FILM</span>
+      </div>
+      <div class="project-name">Not An Offer</div>
+      <div class="project-desc">
+        ISEA Grand Challenge submission — a short film in Kannada exposing fake recruitment scams targeting engineering students. Full production-ready screenplay.
+      </div>
+      <div class="project-stack">
+        <span class="stack-pill">Social Engineering</span>
+        <span class="stack-pill">Cybersecurity Awareness</span>
+        <span class="stack-pill">ISEA</span>
+        <span class="stack-pill">Kannada</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">// ARSENAL</div>
+  <h2 class="section-title">Skills &amp; Tools</h2>
+  <p class="section-sub">What I actually use, not what looks good on a resume.</p>
+
+  <div class="skills-grid">
+    <div class="skill-block">
+      <div class="skill-block-name">Python</div>
+      <div class="skill-block-cat">PRIMARY LANGUAGE</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-name">Kali Linux</div>
+      <div class="skill-block-cat">PENTEST OS</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-name">Machine Learning</div>
+      <div class="skill-block-cat">SCIKIT-LEARN</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-name">Flask</div>
+      <div class="skill-block-cat">WEB BACKEND</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-name">Linux Kernel</div>
+      <div class="skill-block-cat">DRIVER LEVEL</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-name">OSINT</div>
+      <div class="skill-block-cat">SHERLOCK / MAIGRET</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-name">Wireshark</div>
+      <div class="skill-block-cat">PACKET ANALYSIS</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-name">Android Modding</div>
+      <div class="skill-block-cat">CUSTOM ROM / KERNEL</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-name">VMware</div>
+      <div class="skill-block-cat">VIRTUALIZATION</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-name">Bash Scripting</div>
+      <div class="skill-block-cat">AUTOMATION</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-name">Git</div>
+      <div class="skill-block-cat">VERSION CONTROL</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-name">SEToolkit</div>
+      <div class="skill-block-cat">SOCIAL ENG.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">// ABOUT</div>
+  <h2 class="section-title">Who I Am</h2>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a first-year B.E. CSE (Cyber Security) student at <strong>RYMEC, Ballari</strong> under VTU 2025 scheme. Based in Bengaluru.
+      </p>
+      <p>
+        I don't just learn cybersecurity — I build in it. That means a <strong>machine learning phishing detector</strong> with 97% accuracy, a <strong>custom Android kernel</strong> with WiFi driver injection support, and an <strong>open-source MCP server</strong> that puts security tools in AI agents' hands.
+      </p>
+      <p>
+        Long-term goal: <strong>top international university for postgraduate study</strong>. Building the portfolio to get there.
+      </p>
+
+      <div class="cert-list" style="margin-top:1.5rem;">
+        <div class="cert-item">
+          <div class="cert-icon">📡</div>
+          <div>
+            <div class="cert-name">Ethical Hacker</div>
+            <div class="cert-issuer">CISCO NETACAD — INTERMEDIATE</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🔐</div>
+          <div>
+            <div class="cert-name">Introduction to Cybersecurity</div>
+            <div class="cert-issuer">CISCO NETACAD — BEGINNER</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-facts">
+      <div class="fact">
+        <div class="fact-label">INSTITUTION</div>
+        <div class="fact-value">RYMEC, Ballari</div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">DEGREE</div>
+        <div class="fact-value">B.E. CSE — Cyber Security</div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">SCHEME</div>
+        <div class="fact-value">VTU 2025</div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">YEAR</div>
+        <div class="fact-value">First Year</div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">BASED IN</div>
+        <div class="fact-value">Bengaluru, Karnataka</div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">FOCUS</div>
+        <div class="fact-value">Offensive Security + AI</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:0 2rem 6rem; max-width:900px; margin:0 auto;">
+  <div class="contact-inner">
+    <div class="section-label" style="text-align:center; margin-bottom:0.5rem;">// CONTACT</div>
+    <div class="contact-title">Let's Build Something</div>
+    <p class="contact-sub">Open to internships, research collabs, and projects that matter.</p>
+    <div class="contact-links">
+      <a href="https://github.com/MDXWAJID" target="_blank" class="btn btn-ghost">GitHub</a>
+      <a href="https://www.linkedin.com/in/mohammed-wajid-khovawale-1485743b8/" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      <a href="mailto:mohammed@example.com" class="btn btn-primary">Send Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Built by MOHAMMED WAJID KHOVAWALE — Cybersecurity Engineer // <span id="footerYear">2026</span></p>
+</footer>
+
+<script>
+  // Live day + time
+  function updateTime() {
+    const now = new Date();
+    const days = ['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'];
+    const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+    const day = days[now.getDay()];
+    const date = now.getDate();
+    const month = months[now.getMonth()];
+    const year = now.getFullYear();
+    const h = String(now.getHours()).padStart(2,'0');
+    const m = String(now.getMinutes()).padStart(2,'0');
+    const s = String(now.getSeconds()).padStart(2,'0');
+    document.getElementById('dayTime').textContent = `${day} — ${date} ${month} ${year} — ${h}:${m}:${s}`;
+    document.getElementById('footerYear').textContent = year;
+  }
+  updateTime();
+  setInterval(updateTime, 1000);
+
+  // Smooth nav link active state
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
+    });
+  });
+</script>
+</body>
+</html>
