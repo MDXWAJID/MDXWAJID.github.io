@@ -382,6 +382,20 @@
     letter-spacing: 0.04em;
   }
 
+  /* ── PROOF LINKS ── */
+  .proof-links { display:flex; gap:.55rem; flex-wrap:wrap; margin-top:1.1rem; }
+  .proof-link { display:inline-flex; align-items:center; gap:.35rem; padding:.42rem .7rem; border:1px solid var(--border); border-radius:5px; color:var(--muted); background:var(--surface2); text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:.66rem; letter-spacing:.04em; transition:all .2s; }
+  .proof-link:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
+  .proof-link.primary { border-color:rgba(0,212,255,.35); color:var(--accent); }
+  .proof-note { font-family:'JetBrains Mono',monospace; font-size:.68rem; color:var(--dim); margin-top:.7rem; }
+  .proof-panel { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:1.5rem; }
+  .proof-panel-title { font-size:1rem; font-weight:700; margin-bottom:.45rem; }
+  .proof-panel-text { color:var(--muted); font-size:.86rem; line-height:1.7; margin-bottom:1rem; }
+  .proof-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:.75rem; }
+  .proof-item { border:1px solid var(--border); border-radius:8px; padding:.9rem; background:var(--surface2); }
+  .proof-item strong { display:block; font-size:.78rem; margin-bottom:.25rem; }
+  .proof-item span { color:var(--muted); font-size:.72rem; line-height:1.5; }
+
   /* ── SKILLS GRID ── */
   .skills-grid {
     display: grid;
@@ -577,6 +591,7 @@
   <div class="nav-logo">MH // sec</div>
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#proof">Proof</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -701,6 +716,12 @@
         <span class="stack-pill">AnyKernel3</span>
         <span class="stack-pill">C</span>
       </div>
+      <div class="proof-links">
+        <a class="proof-link primary" href="https://github.com/MDXWAJID/poco-x2-nethunter-kernel" target="_blank" rel="noopener">↗ SOURCE CODE</a>
+        <a class="proof-link" href="https://github.com/MDXWAJID/poco-x2-nethunter-kernel/actions" target="_blank" rel="noopener">↗ BUILD RUNS</a>
+        <a class="proof-link" href="https://github.com/MDXWAJID/Nethunter-Kernel-Builder" target="_blank" rel="noopener">↗ BUILDER</a>
+      </div>
+      <div class="proof-note">Public repository + workflow history</div>
     </div>
 
     <!-- SecOps MCP -->
@@ -739,6 +760,29 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROOF OF WORK -->
+<section id="proof">
+  <div class="section-label">// PROOF OF WORK</div>
+  <h2 class="section-title">Evidence, Not Just Claims</h2>
+  <p class="section-sub">Every serious project should be traceable to source, builds, demos, screenshots, or documentation.</p>
+  <div class="proof-panel">
+    <div class="proof-panel-title">How the work is verified</div>
+    <div class="proof-panel-text">
+      Project cards link directly to primary evidence where it is publicly available.
+      Source repositories prove implementation; workflow history proves repeatable builds;
+      screenshots, recordings and reports prove the resulting work.
+    </div>
+    <div class="proof-grid">
+      <div class="proof-item"><strong>01 — SOURCE</strong><span>Repository, code, configuration and commit history.</span></div>
+      <div class="proof-item"><strong>02 — BUILD</strong><span>CI runs, build logs, artifacts or reproducible commands.</span></div>
+      <div class="proof-item"><strong>03 — RESULT</strong><span>Working demo, screenshots, recordings or measured output.</span></div>
+      <div class="proof-item"><strong>04 — DOCUMENTATION</strong><span>README, technical report, architecture or submission material.</span></div>
+    </div>
   </div>
 </section>
 
